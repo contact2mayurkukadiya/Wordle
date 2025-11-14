@@ -439,3 +439,57 @@ input:checked+.slider {
 input:checked+.slider:before {
     transform: translateX(22px);
 }
+
+/* ========================================================================= */
+/* SECTION: END GAME MODAL STYLES
+/* ========================================================================= */
+
+#end-game-modal .modal-content {
+    text-align: center;
+    /* Center all content in the modal */
+}
+
+#end-game-message {
+    font-family: 'Space Mono', monospace;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+#end-game-message.win-message {
+    color: var(--correct-color);
+    text-shadow: 0 0 15px var(--correct-color);
+}
+
+#end-game-message.loss-message {
+    color: var(--error-color);
+    text-shadow: 0 0 15px var(--error-color);
+}
+
+#end-game-details {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-family: 'Space Mono', monospace;
+}
+
+#end-game-replay-button {
+    display: inline-block;
+    /* Allows for centering with text-align */
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 2px solid var(--glow-primary);
+    background-color: rgba(var(--glow-primary-rgb), 0.2);
+    color: var(--glow-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+}
+
+#end-game-replay-button:hover {
+    background-color: var(--glow-primary);
+    color: #121213;
+    box-shadow: 0 0 15px var(--glow-primary);
+}

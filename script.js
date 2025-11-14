@@ -23,13 +23,18 @@
     const gameBoard = document.getElementById("game-board"),
         keyboard = document.getElementById("keyboard"),
         message = document.getElementById("message"),
-        replayButton = document.getElementById('replay-button'),
+        // replayButton = document.getElementById('replay-button'),
         toastContainer = document.getElementById('toast-container'),
         helpIcon = document.getElementById('help-icon'),
         helpModal = document.getElementById('help-modal'),
         settingsIcon = document.getElementById('settings-icon'),
         resetIcon = document.getElementById('reset-icon'),
-        settingsModal = document.getElementById('settings-modal');
+        settingsModal = document.getElementById('settings-modal'),
+        endGameModal = document.getElementById('end-game-modal'),
+        endGameMessage = document.getElementById('end-game-message'),
+        endGameDetails = document.getElementById('end-game-details'),
+        endGameReplayButton = document.getElementById('end-game-replay-button');
+
 
     // =========================================================================
     // SECTION: SETTINGS MANAGEMENT (THEME, DIFFICULTY, ETC.)
@@ -205,7 +210,17 @@
         }
         setupModal(helpIcon, helpModal);
         setupModal(settingsIcon, settingsModal);
-        replayButton.addEventListener('click', () => resetGame());
+        endGameReplayButton.addEventListener('click', () => {
+            endGameModal.classList.remove('show');
+            resetGame();
+        });
+        const endGameCloseBtn = endGameModal.querySelector('.close-button');
+        endGameCloseBtn.addEventListener('click', () => endGameModal.classList.remove('show'));
+        endGameModal.addEventListener('click', e => {
+            if (e.target === endGameModal) endGameModal.classList.remove('show');
+        });
+
+
         resetIcon.addEventListener('click', () => resetGame());
     }
 
@@ -227,9 +242,9 @@
 
         const wordList = wordLists[settings.level] || wordLists.easy;
         secretWord = wordList[Math.floor(Math.random() * wordList.length)];
-        if (isRestart) {
-            console.log(`New game on '${settings.level}' mode. Word: ${secretWord}`);
-        }
+        // if (isRestart) {
+        //     console.log(`New game on '${settings.level}' mode. Word: ${secretWord}`);
+        // }
 
         document.querySelectorAll('.tile').forEach(tile => {
             tile.classList.remove('flip');
@@ -244,7 +259,7 @@
         });
         document.querySelectorAll('.key').forEach(key => key.classList.remove('correct', 'present', 'absent'));
         message.textContent = '';
-        replayButton.classList.add('hidden');
+        endGameModal.classList.remove('show');
     }
 
     function handleKeyPress(key) {
@@ -290,10 +305,10 @@
             updateKeyboardColors(guessResult);
             if (guess === secretWord) {
                 message.textContent = "You win!";
-                endGame();
+                endGame(true);
             } else if (currentRow === maxGuesses - 1) {
-                message.textContent = `You lose! The word was ${secretWord.toUpperCase()}`;
-                endGame();
+                // message.textContent = `You lose! The word was ${secretWord.toUpperCase()}`;
+                endGame(false);
             } else {
                 currentRow++;
                 currentGuess = "";
@@ -333,10 +348,21 @@
         });
     }
 
-    function endGame() {
+    function endGame(isWin) {
         isGameOver = true;
         isAnimating = false;
-        replayButton.classList.remove('hidden');
+        if (isWin) {
+            endGameMessage.textContent = "VICTORY";
+            endGameMessage.className = 'win-message';
+            endGameDetails.textContent = `You guessed the secret word!`;
+        } else {
+            endGameMessage.textContent = "DEFEAT";
+            endGameMessage.className = 'loss-message';
+            endGameDetails.textContent = `The secret word was: ${secretWord.toUpperCase()}`;
+        }
+        setTimeout(() => {
+            endGameModal.classList.add('show');
+        }, 200);
     }
 
     // =========================================================================

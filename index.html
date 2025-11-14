@@ -5,9 +5,11 @@
     <title>Wordle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="theme-astro.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body data-theme="dark">
@@ -105,6 +107,16 @@
                 <label class="switch"><input type="checkbox" id="onscreen-keyboard-switch"><span
                         class="slider"></span></label>
             </div>
+        </div>
+    </div>
+
+    <!-- End Game Modal -->
+    <div id="end-game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="end-game-message"></h2>
+            <p id="end-game-details"></p>
+            <button id="end-game-replay-button">Play Again</button>
         </div>
     </div>
 
