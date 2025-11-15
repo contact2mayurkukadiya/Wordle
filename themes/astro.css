@@ -1,0 +1,240 @@
+/* ======================================================= */
+/* THEME: Astro - OVERRIDE STYLES
+/* ======================================================= */
+
+:root {
+    --glow-primary-rgb: 0, 234, 255;
+    --glow-secondary-rgb: 255, 0, 255;
+    --correct-color-rgb: 57, 255, 20;
+    --present-color-rgb: 255, 255, 0;
+    --absent-color-rgb: 58, 58, 60;
+    --error-color-rgb: 255, 51, 0;
+    --text-color-rgb: 224, 224, 224;
+    --dark-bg-rgb: 13, 15, 24;
+    --glow-primary: rgb(var(--glow-primary-rgb));
+    --glow-secondary: rgb(var(--glow-secondary-rgb));
+    --correct-color: rgb(var(--correct-color-rgb));
+    --present-color: rgb(var(--present-color-rgb));
+    --absent-color: rgb(var(--absent-color-rgb));
+    --error-color: rgb(var(--error-color-rgb));
+    --text-color: rgb(var(--text-color-rgb));
+    --background-color: rgb(var(--dark-bg-rgb));
+}
+
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    font-family: 'Space Mono', monospace !important;
+    background-image: url('../assets/background.jpg') !important;
+    /* Correct path */
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.toast {
+    background-color: rgba(var(--dark-bg-rgb), 0.7) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--glow-primary) !important;
+    box-shadow: 0 0 15px var(--glow-primary) !important;
+    backdrop-filter: blur(10px);
+}
+
+header {
+    max-width: 540px !important;
+    border-bottom: 2px solid var(--glow-primary) !important;
+    box-shadow: 0 3px 15px rgba(var(--glow-primary-rgb), 0.4) !important;
+    background-color: transparent !important;
+}
+
+header h1 {
+    color: var(--text-color) !important;
+    text-shadow: 0 0 5px var(--glow-primary), 0 0 10px var(--glow-primary), 0 0 20px var(--glow-secondary) !important;
+}
+
+.icon {
+    font-size: 1.8rem !important;
+}
+
+.icon:hover {
+    color: var(--glow-primary) !important;
+    text-shadow: 0 0 8px var(--glow-primary) !important;
+    transform: scale(1.1);
+}
+
+#game-board {
+    gap: 12px !important;
+    background: rgba(var(--glow-primary-rgb), 0.05) !important;
+    border: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+    border-radius: 10px !important;
+}
+
+.tile-container {
+    width: 62px !important;
+    height: 62px !important;
+}
+
+.tile-front,
+.tile-back {
+    background-color: rgba(var(--dark-bg-rgb), 0.4) !important;
+    border: 2px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+    color: var(--text-color) !important;
+    border-radius: 8px !important;
+}
+
+.correct {
+    background-color: rgba(var(--correct-color-rgb), 0.8) !important;
+    border-color: var(--correct-color) !important;
+    box-shadow: 0 0 15px var(--correct-color) !important;
+    color: #121213 !important;
+}
+
+.present {
+    background-color: rgba(var(--present-color-rgb), 0.8) !important;
+    border-color: var(--present-color) !important;
+    box-shadow: 0 0 15px var(--present-color) !important;
+    color: #121213 !important;
+}
+
+.absent {
+    background-color: rgba(var(--absent-color-rgb), 0.8) !important;
+    border-color: var(--absent-color) !important;
+    color: var(--text-color) !important;
+}
+
+.tile-container.shake .tile-front {
+    border-color: var(--error-color) !important;
+    box-shadow: 0 0 10px var(--error-color) !important;
+}
+
+#keyboard {
+    margin: 20px 0 10px 0 !important;
+}
+
+.key {
+    background-color: rgba(var(--glow-primary-rgb), 0.1) !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.key:hover {
+    background-color: rgba(var(--glow-primary-rgb), 0.25) !important;
+    border-color: var(--glow-primary) !important;
+    filter: none !important;
+}
+
+.key.correct,
+.key.present {
+    color: #121213 !important;
+}
+
+.key.absent {
+    color: var(--text-color) !important;
+}
+
+.key.correct {
+    background-color: rgba(var(--correct-color-rgb), 0.8) !important;
+    border-color: var(--correct-color) !important;
+    box-shadow: 0 0 8px var(--correct-color) !important;
+}
+
+.key.present {
+    background-color: rgba(var(--present-color-rgb), 0.8) !important;
+    border-color: var(--present-color) !important;
+    box-shadow: 0 0 8px var(--present-color) !important;
+}
+
+.key.absent {
+    background-color: rgba(var(--absent-color-rgb), 0.8) !important;
+    border-color: var(--absent-color) !important;
+}
+
+.modal {
+    background-color: rgba(var(--dark-bg-rgb), 0.7) !important;
+}
+
+.modal-content {
+    background-color: rgba(var(--dark-bg-rgb), 0.8) !important;
+    border: 1px solid var(--glow-primary) !important;
+    box-shadow: 0 0 25px rgba(var(--glow-primary-rgb), 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.modal-content hr {
+    border-top: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+}
+
+strong {
+    color: var(--glow-primary) !important;
+}
+
+.setting-row {
+    border-bottom: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+}
+
+#difficulty-dropdown,
+#theme-dropdown {
+    background-color: rgba(var(--glow-primary-rgb), 0.1) !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#difficulty-dropdown:focus,
+#theme-dropdown:focus {
+    border-color: var(--glow-primary) !important;
+    box-shadow: 0 0 8px var(--glow-primary) !important;
+}
+
+.slider {
+    background-color: rgba(var(--absent-color-rgb), 0.7) !important;
+    border: 1px solid rgba(var(--glow-primary-rgb), 0.3) !important;
+}
+
+.slider:before {
+    background-color: var(--text-color) !important;
+}
+
+input:checked+.slider {
+    background-color: rgba(var(--glow-primary-rgb), 0.7) !important;
+    box-shadow: 0 0 10px var(--glow-primary) !important;
+}
+
+#end-game-message,
+#end-game-details,
+#end-game-replay-button {
+    font-family: 'Space Mono', monospace !important;
+}
+
+#end-game-message.win-message {
+    color: var(--correct-color) !important;
+    text-shadow: 0 0 15px var(--correct-color) !important;
+}
+
+#end-game-message.loss-message {
+    color: var(--error-color) !important;
+    text-shadow: 0 0 15px var(--error-color) !important;
+}
+
+#end-game-replay-button {
+    border: 2px solid var(--glow-primary) !important;
+    background-color: rgba(var(--glow-primary-rgb), 0.2) !important;
+    color: var(--glow-primary) !important;
+}
+
+#end-game-replay-button:hover {
+    background-color: var(--glow-primary) !important;
+    color: #121213 !important;
+    box-shadow: 0 0 15px var(--glow-primary) !important;
+}

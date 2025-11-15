@@ -1,0 +1,170 @@
+/* ======================================================= */
+/* THEME: Default (Dark & Light)
+/* ======================================================= */
+
+:root {
+    --background-color: #121213;
+    --text-color: #ffffff;
+    --tile-border-color: #3a3a3c;
+    --key-bg-color: #818384;
+    --key-text-color: #ffffff;
+    --modal-bg-color: #2c2c2d;
+    --correct-color: #6aaa64;
+    --present-color: #c9b458;
+    --absent-color: #3a3a3c;
+    --error-color: #8B0000;
+    /* Dark Red for errors */
+}
+
+[data-theme="light"] {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --tile-border-color: #d3d6da;
+    --key-bg-color: #d3d6da;
+    --key-text-color: #000000;
+    --modal-bg-color: #f8f8f8;
+    --absent-color: #787c7e;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.toast {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+header {
+    border-bottom: 1px solid var(--tile-border-color);
+}
+
+.icon {
+    color: var(--text-color);
+}
+
+.tile-front,
+.tile-back {
+    border: 2px solid var(--tile-border-color);
+}
+
+.correct {
+    background-color: var(--correct-color);
+    border-color: var(--correct-color) !important;
+    /* !important ensures override */
+    color: white;
+}
+
+.present {
+    background-color: var(--present-color);
+    border-color: var(--present-color) !important;
+    color: white;
+}
+
+.absent {
+    background-color: var(--absent-color);
+    border-color: var(--absent-color) !important;
+    color: white;
+}
+
+.key {
+    background-color: var(--key-bg-color);
+    color: var(--key-text-color);
+    border: none;
+}
+
+.key:hover {
+    filter: brightness(1.1);
+}
+
+.key.correct,
+.key.present,
+.key.absent {
+    color: white;
+}
+
+.key.correct {
+    background-color: var(--correct-color);
+}
+
+.key.present {
+    background-color: var(--present-color);
+}
+
+.key.absent {
+    background-color: var(--absent-color);
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: var(--modal-bg-color);
+}
+
+.close-button {
+    color: #aaa;
+}
+
+.modal-content hr {
+    border-top: 1px solid var(--tile-border-color);
+}
+
+strong {
+    font-weight: bold;
+}
+
+.setting-row {
+    border-bottom: 1px solid var(--tile-border-color);
+}
+
+#difficulty-dropdown,
+#theme-dropdown {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--tile-border-color);
+}
+
+#difficulty-dropdown:focus {
+    border-color: var(--present-color);
+}
+
+.slider {
+    background-color: #ccc;
+}
+
+.slider:before {
+    background-color: white;
+}
+
+input:checked+.slider {
+    background-color: var(--correct-color);
+}
+
+#end-game-message {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+#end-game-message.win-message {
+    color: var(--correct-color);
+}
+
+#end-game-message.loss-message {
+    color: var(--error-color);
+}
+
+#end-game-details {
+    font-family: 'Poppins', sans-serif;
+}
+
+#end-game-replay-button {
+    border: none;
+    background-color: var(--correct-color);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}

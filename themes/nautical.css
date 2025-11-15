@@ -1,0 +1,138 @@
+/* ======================================================= */
+/* THEME: Nautical - OVERRIDE STYLES
+/* ======================================================= */
+:root {
+    --background-color-rgb: 232, 227, 212;
+    /* Parchment */
+    --text-color-rgb: 24, 43, 62;
+    /* Navy Blue */
+    --correct-color-rgb: 77, 139, 114;
+    /* Sea Green */
+    --present-color-rgb: 211, 175, 92;
+    /* Brass Gold */
+    --absent-color-rgb: 131, 145, 161;
+    /* Ship Grey */
+    --error-color-rgb: 192, 57, 43;
+    /* Port Red */
+
+    --background-color: rgb(var(--background-color-rgb));
+    --text-color: rgb(var(--text-color-rgb));
+    --correct-color: rgb(var(--correct-color-rgb));
+    --present-color: rgb(var(--present-color-rgb));
+    --absent-color: rgb(var(--absent-color-rgb));
+    --error-color: rgb(var(--error-color-rgb));
+}
+
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    font-family: 'Merriweather', serif !important;
+    background-image: url('../assets/nautical-bg.jpg') !important;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.toast {
+    background-color: var(--background-color);
+    border: 2px solid var(--text-color);
+}
+
+header {
+    background-color: rgba(var(--background-color-rgb), 0.7);
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid var(--text-color) !important;
+    padding: 5px;
+    border-radius: 0 0 10px 10px;
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+.tile-face {
+    border-radius: 6px !important;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.tile-front {
+    background: transparent;
+    border: 2px solid rgba(var(--text-color-rgb), 0.5);
+}
+
+.correct,
+.present,
+.absent {
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.correct {
+    background-color: var(--correct-color);
+    border-color: var(--correct-color);
+}
+
+.present {
+    background-color: var(--present-color);
+    border-color: var(--present-color);
+}
+
+.absent {
+    background-color: var(--absent-color);
+    border-color: var(--absent-color);
+}
+
+.key {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 8px !important;
+    border: 2px solid rgba(var(--text-color-rgb), 0.7) !important;
+    box-shadow: none !important;
+    font-family: 'Merriweather', serif;
+}
+
+.key:active,
+.key.pressed {
+    background-color: var(--present-color) !important;
+    color: white !important;
+}
+
+.modal-content {
+    background-color: rgba(var(--background-color-rgb), 0.9) !important;
+    backdrop-filter: blur(8px);
+    border: 2px solid var(--text-color) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+strong {
+    color: var(--present-color) !important;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+#difficulty-dropdown,
+#theme-dropdown {
+    background-color: white;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    border-radius: 8px;
+}
+
+#end-game-replay-button {
+    border-radius: 8px;
+}
+
+/* Switch Styles (Rounded) */
+.slider {
+    background-color: var(--absent-color) !important;
+    border-radius: 34px !important;
+}
+
+.slider:before {
+    background-color: white !important;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--correct-color) !important;
+}

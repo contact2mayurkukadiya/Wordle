@@ -1,0 +1,214 @@
+/* ======================================================= */
+/* THEME: Scribe - OVERRIDE STYLES
+/* ======================================================= */
+
+:root {
+    --background-color-rgb: 243, 239, 230;
+    /* Parchment Paper */
+    --text-color-rgb: 45, 41, 38;
+    /* Faded Black Ink */
+    --correct-color-rgb: 104, 186, 118;
+    /* Green Highlighter */
+    --present-color-rgb: 255, 233, 94;
+    /* Yellow Highlighter */
+    --absent-color-rgb: 196, 196, 196;
+    /* Light Gray */
+    --border-color-rgb: 181, 172, 161;
+    /* Pencil Gray */
+    --error-color-rgb: 217, 72, 59;
+    /* Red Ink */
+
+    --background-color: rgb(var(--background-color-rgb));
+    --text-color: rgb(var(--text-color-rgb));
+    --correct-color: rgb(var(--correct-color-rgb));
+    --present-color: rgb(var(--present-color-rgb));
+    --absent-color: rgb(var(--absent-color-rgb));
+    --border-color: rgb(var(--border-color-rgb));
+    --error-color: rgb(var(--error-color-rgb));
+}
+
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    font-family: 'Special Elite', monospace !important;
+    background-image: url('../assets/scribe-bg.png') !important;
+    background-repeat: repeat !important;
+}
+
+.toast {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: var(--text-color) !important;
+    border: 2px solid var(--text-color) !important;
+    border-radius: 3px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+    font-weight: normal;
+    padding: 12px 20px;
+}
+
+header {
+    background: transparent !important;
+    border-bottom: 2px solid var(--text-color) !important;
+    box-shadow: none !important;
+    padding-bottom: 5px;
+}
+
+header h1 {
+    font-size: 2.1rem !important;
+    font-weight: normal;
+    text-shadow: none !important;
+    animation: none !important;
+    color: var(--text-color) !important;
+    background-image: none !important;
+}
+
+.icon {
+    font-size: 1.5rem !important;
+}
+
+.icon:hover {
+    color: var(--error-color) !important;
+    transform: none !important;
+}
+
+#game-board {
+    gap: 10px !important;
+}
+
+.tile-face {
+    border-radius: 2px !important;
+    font-weight: normal !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: none !important;
+}
+
+.tile-front {
+    background-color: transparent !important;
+}
+
+/* Colors look like highlighters */
+.correct {
+    background-color: rgba(var(--correct-color-rgb), 0.7) !important;
+    border-color: var(--correct-color) !important;
+    color: var(--text-color) !important;
+}
+
+.present {
+    background-color: rgba(var(--present-color-rgb), 0.8) !important;
+    border-color: var(--present-color) !important;
+    color: var(--text-color) !important;
+}
+
+.absent {
+    background-color: var(--absent-color) !important;
+    border-color: var(--absent-color) !important;
+    color: #fff !important;
+}
+
+.key {
+    background-color: #fff !important;
+    border: 2px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 0 0 var(--border-color) !important;
+    font-family: 'Special Elite', monospace !important;
+    font-size: 1rem;
+    transition: all 0.1s ease;
+}
+
+.key:hover {
+    filter: none;
+}
+
+.key.pressed,
+.key:active {
+    transform: translateY(2px) !important;
+    box-shadow: none !important;
+}
+
+.key.correct {
+    background-color: var(--correct-color) !important;
+    color: white !important;
+}
+
+.key.present {
+    background-color: var(--present-color) !important;
+    color: var(--text-color) !important;
+}
+
+.key.absent {
+    background-color: var(--absent-color) !important;
+    color: white !important;
+}
+
+.modal {
+    background-color: rgba(var(--background-color-rgb), 0.5) !important;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: var(--background-color) !important;
+    background-image: url('../assets/scribe-bg.png') !important;
+    border: 2px solid var(--text-color) !important;
+    border-radius: 0 !important;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+strong {
+    color: var(--text-color) !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#difficulty-dropdown,
+#theme-dropdown {
+    background-color: #fff !important;
+    border: 2px solid var(--border-color) !important;
+    font-family: 'Special Elite', monospace !important;
+    color: var(--text-color) !important;
+    border-radius: 0;
+}
+
+#end-game-message {
+    font-size: 2.5rem;
+}
+
+#end-game-message.win-message {
+    color: var(--correct-color) !important;
+}
+
+#end-game-message.loss-message {
+    color: var(--error-color) !important;
+}
+
+#end-game-replay-button:hover {
+    filter: brightness(1.1);
+}
+
+/* ================================================= */
+/* STYLES FOR SETTINGS SWITCH
+/* ================================================= */
+
+.slider {
+    border: 2px solid var(--border-color) !important;
+    background-color: #fff !important;
+    border-radius: 0 !important;
+}
+
+.slider:before {
+    background-color: var(--absent-color) !important;
+    border-radius: 0 !important;
+    height: 18px !important;
+    width: 18px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+    border: none;
+    box-shadow: none;
+}
+
+input:checked+.slider {
+    border-color: var(--correct-color) !important;
+}
+
+input:checked+.slider:before {
+    background-color: var(--correct-color) !important;
+}

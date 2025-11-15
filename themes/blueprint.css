@@ -1,0 +1,191 @@
+/* ======================================================= */
+/* THEME: Blueprint - OVERRIDE STYLES
+/* ======================================================= */
+
+:root {
+    --background-color-rgb: 10, 44, 82;
+    /* Deep Blueprint Blue */
+    --text-color-rgb: 255, 255, 255;
+    /* White Ink */
+    --accent-color-rgb: 0, 169, 224;
+    /* Cyan Highlight */
+    --correct-color-rgb: 93, 218, 104;
+    /* Measurement Green */
+    --present-color-rgb: 255, 215, 0;
+    /* Warning Yellow */
+    --absent-color-rgb: 65, 90, 119;
+    /* Faded Blue */
+    --error-color-rgb: 255, 89, 89;
+    /* Redline Error */
+
+    --background-color: rgb(var(--background-color-rgb));
+    --text-color: rgb(var(--text-color-rgb));
+    --accent-color: rgb(var(--accent-color-rgb));
+    --correct-color: rgb(var(--correct-color-rgb));
+    --present-color: rgb(var(--present-color-rgb));
+    --absent-color: rgb(var(--absent-color-rgb));
+    --error-color: rgb(var(--error-color-rgb));
+}
+
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    background-image: url('../assets/blueprint-bg.png') !important;
+    background-repeat: repeat !important;
+}
+
+.toast {
+    background-color: var(--background-color) !important;
+    color: var(--error-color) !important;
+    border: 2px solid var(--error-color) !important;
+    box-shadow: none !important;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 0;
+}
+
+header {
+    background: transparent !important;
+    border-bottom: 2px solid var(--text-color) !important;
+    box-shadow: none !important;
+    padding-bottom: 5px;
+}
+
+header h1 {
+    font-size: 2rem !important;
+    font-weight: normal !important;
+    animation: none !important;
+    background-image: none !important;
+    text-shadow: none !important;
+    color: var(--text-color) !important;
+}
+
+.icon:hover {
+    color: var(--accent-color) !important;
+}
+
+.tile-face {
+    border-radius: 0 !important;
+    border-style: dashed !important;
+    border-width: 2px !important;
+    background-color: transparent !important;
+}
+
+.tile-front {
+    border-color: rgba(var(--text-color-rgb), 0.5) !important;
+}
+
+.correct,
+.present,
+.absent {
+    border-style: solid !important;
+    color: var(--text-color) !important;
+}
+
+.correct {
+    background-color: var(--correct-color) !important;
+    border-color: var(--correct-color) !important;
+}
+
+.present {
+    background-color: var(--present-color) !important;
+    border-color: var(--present-color) !important;
+}
+
+.absent {
+    background-color: var(--absent-color) !important;
+    border-color: var(--absent-color) !important;
+}
+
+.key {
+    background-color: transparent !important;
+    border: 2px solid var(--text-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 0 !important;
+    font-family: 'Share Tech Mono', monospace !important;
+    padding: 16px 12px;
+    box-shadow: none !important;
+}
+
+.key.pressed,
+.key:active {
+    background-color: var(--text-color) !important;
+    color: var(--background-color) !important;
+    transform: none !important;
+}
+
+.key.correct {
+    background-color: var(--correct-color) !important;
+    border-color: var(--correct-color) !important;
+    color: white !important;
+}
+
+.key.present {
+    background-color: var(--present-color) !important;
+    border-color: var(--present-color) !important;
+    color: var(--background-color) !important;
+}
+
+.key.absent {
+    background-color: var(--absent-color) !important;
+    border-color: var(--absent-color) !important;
+    color: white !important;
+}
+
+.modal {
+    background-color: rgba(var(--background-color-rgb), 0.7) !important;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: var(--background-color) !important;
+    border: 2px solid var(--text-color) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background-image: url('../assets/blueprint-bg.png') !important;
+}
+
+strong {
+    color: var(--accent-color) !important;
+    font-weight: bold;
+}
+
+#difficulty-dropdown,
+#theme-dropdown {
+    background-color: var(--background-color) !important;
+    border: 2px solid var(--text-color) !important;
+    color: var(--text-color) !important;
+    border-radius: 0;
+    font-family: 'Share Tech Mono', monospace !important;
+}
+
+#end-game-replay-button:hover {
+    background-color: var(--accent-color) !important;
+    color: white !important;
+}
+
+/* ================================================= */
+/* STYLES FOR SETTINGS SWITCH
+/* ================================================= */
+
+.slider {
+    border: 2px solid var(--text-color) !important;
+    background-color: var(--background-color) !important;
+    border-radius: 0 !important;
+}
+
+.slider:before {
+    background-color: var(--text-color) !important;
+    border-radius: 0 !important;
+    height: 18px !important;
+    width: 18px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+input:checked+.slider {
+    background-color: var(--accent-color) !important;
+}

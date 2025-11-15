@@ -30,6 +30,10 @@
         settingsIcon = document.getElementById('settings-icon'),
         resetIcon = document.getElementById('reset-icon'),
         settingsModal = document.getElementById('settings-modal'),
+        themeDropdown = document.getElementById('theme-dropdown'),
+        themeSwitch = document.getElementById('theme-switch'),
+        darkThemeRow = document.getElementById('dark-theme-row'),
+        themeStylesheet = document.getElementById('theme-stylesheet'),
         endGameModal = document.getElementById('end-game-modal'),
         endGameMessage = document.getElementById('end-game-message'),
         endGameDetails = document.getElementById('end-game-details'),
@@ -42,7 +46,8 @@
 
     let settings = {
         level: 'easy',
-        theme: 'dark',
+        themeFile: 'default.css',
+        isDark: true,
         onScreenOnly: false
     };
 
@@ -50,19 +55,44 @@
         localStorage.setItem('wordleSettings', JSON.stringify(settings));
     }
 
+    function loadTheme(filename) {
+        themeStylesheet.setAttribute('href', `themes/${filename}`);
+    }
+
+    function applyBodyTheme() {
+        if (settings.themeFile === 'default.css') {
+            document.body.dataset.theme = settings.isDark ? 'dark' : 'light';
+            darkThemeRow.classList.remove('disabled');
+            themeSwitch.checked = settings.isDark;
+        } else {
+            document.body.removeAttribute('data-theme');
+            darkThemeRow.classList.add('disabled');
+        }
+    }
+
     function loadSettings() {
         const saved = localStorage.getItem('wordleSettings');
         if (saved) {
             settings = JSON.parse(saved);
+            // Backwards compatibility for old setting format
+            if (settings.theme && (settings.theme === 'dark' || settings.theme === 'light')) {
+                settings.isDark = settings.theme === 'dark';
+                settings.themeFile = 'default.css';
+                delete settings.theme;
+            }
         }
     }
 
     function applySettings() {
-        document.body.dataset.theme = settings.theme;
+        // Apply all loaded settings to the UI
+        loadTheme(settings.themeFile);
+        applyBodyTheme();
+
         document.getElementById('difficulty-dropdown').value = settings.level;
-        document.getElementById('theme-switch').checked = settings.theme === 'dark';
+        document.getElementById('theme-dropdown').value = settings.themeFile;
         document.getElementById('onscreen-keyboard-switch').checked = settings.onScreenOnly;
     }
+
 
     // =========================================================================
     // SECTION: GAME INITIALIZATION
@@ -175,10 +205,17 @@
             saveSettings();
             resetGame();
         });
-        document.getElementById('theme-switch').addEventListener('change', (e) => {
-            settings.theme = e.target.checked ? 'dark' : 'light';
+        themeDropdown.addEventListener('change', (e) => {
+            settings.themeFile = e.target.value;
+            loadTheme(settings.themeFile);
+            applyBodyTheme(); // This will enable/disable the dark mode switch
             saveSettings();
-            applySettings();
+        });
+
+        themeSwitch.addEventListener('change', (e) => {
+            settings.isDark = e.target.checked;
+            applyBodyTheme();
+            saveSettings();
         });
         document.getElementById('onscreen-keyboard-switch').addEventListener('change', (e) => {
             settings.onScreenOnly = e.target.checked;

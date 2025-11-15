@@ -5,11 +5,19 @@
     <title>Wordle</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
     <!-- <link rel="stylesheet" type="text/css" href="theme-astro.css"> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
 </head>
 
 <body data-theme="dark">
@@ -91,7 +99,7 @@
             <span class="close-button">&times;</span>
             <h2>Settings</h2>
             <div class="setting-row">
-                <label for="difficulty-dropdown">Game Mode</label>
+                <label for="difficulty-dropdown">Difficulty</label>
                 <select id="difficulty-dropdown">
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -99,6 +107,21 @@
                 </select>
             </div>
             <div class="setting-row">
+                <label for="theme-dropdown">Theme</label>
+                <select id="theme-dropdown">
+                    <option value="default.css">Default</option>
+                    <option value="astro.css">Astro</option>
+                    <option value="synthwave.css">Synthwave</option>
+                    <option value="verdant.css">Verdant</option>
+                    <option value="8bit.css">8-Bit</option>
+                    <option value="scribe.css">Scribe</option>
+                    <option value="blueprint.css">Blueprint</option>
+                    <option value="bubblegum.css">Bubblegum</option>
+                    <option value="nautical.css">Nautical</option>
+                    <option value="terminal.css">Terminal</option>
+                </select>
+            </div>
+            <div id="dark-theme-row" class="setting-row">
                 <label for="theme-switch">Dark Theme</label>
                 <label class="switch"><input type="checkbox" id="theme-switch"><span class="slider"></span></label>
             </div>
