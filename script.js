@@ -37,7 +37,10 @@
         endGameModal = document.getElementById('end-game-modal'),
         endGameMessage = document.getElementById('end-game-message'),
         endGameDetails = document.getElementById('end-game-details'),
-        endGameReplayButton = document.getElementById('end-game-replay-button');
+        endGameReplayButton = document.getElementById('end-game-replay-button'),
+        statsIcon = document.getElementById('stats-icon'),
+        statsModal = document.getElementById('stats-modal');
+
 
 
     // =========================================================================
@@ -95,6 +98,58 @@
 
 
     // =========================================================================
+    // SECTION: GAME STATE
+    // =========================================================================
+    let stats = {
+        gamesPlayed: 0,
+        wins: 0,
+        currentStreak: 0,
+        maxStreak: 0,
+        guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
+    };
+
+    function saveStats() {
+        localStorage.setItem('wordleStats', JSON.stringify(stats));
+    }
+
+    function loadStats() {
+        const savedStats = JSON.parse(localStorage.getItem('wordleStats'));
+        if (savedStats) {
+            // Basic migration: If a new stat is added, ensure it exists.
+            if (!savedStats.guessDistribution) {
+                savedStats.guessDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+            }
+            stats = savedStats;
+        }
+    }
+
+    function updateStatsModal(winningRow = null) {
+        // Update simple stats
+        document.getElementById('games-played').textContent = stats.gamesPlayed;
+        const winPercentage = stats.gamesPlayed > 0 ? Math.round((stats.wins / stats.gamesPlayed) * 100) : 0;
+        document.getElementById('win-percentage').textContent = winPercentage;
+        document.getElementById('current-streak').textContent = stats.currentStreak;
+        document.getElementById('max-streak').textContent = stats.maxStreak;
+
+        // Update guess distribution graph
+        const distribution = stats.guessDistribution;
+        const maxDistributionValue = Math.max(...Object.values(distribution), 1); // Avoid division by zero
+
+        for (let i = 1; i <= 6; i++) {
+            const bar = document.querySelector(`.graph-bar[data-guess='${i}']`);
+            const count = distribution[i] || 0;
+            const barWidth = count > 0 ? (count / maxDistributionValue) * 100 : 0;
+
+            bar.style.width = `${barWidth}%`;
+            bar.textContent = count;
+
+            bar.classList.toggle('highlight', i === winningRow);
+        }
+    }
+
+
+
+    // =========================================================================
     // SECTION: GAME INITIALIZATION
     // =========================================================================
 
@@ -144,6 +199,7 @@
         createKeyboard();
         validWords = new Set([...wordLists.easy, ...wordLists.medium, ...wordLists.hard]);
         loadSettings();
+        loadStats();
         applySettings();
         resetGame(false);
     }
@@ -247,6 +303,8 @@
         }
         setupModal(helpIcon, helpModal);
         setupModal(settingsIcon, settingsModal);
+        setupModal(statsIcon, statsModal);
+        statsIcon.addEventListener('click', () => updateStatsModal());
         endGameReplayButton.addEventListener('click', () => {
             endGameModal.classList.remove('show');
             resetGame();
@@ -279,9 +337,9 @@
 
         const wordList = wordLists[settings.level] || wordLists.easy;
         secretWord = wordList[Math.floor(Math.random() * wordList.length)];
-        // if (isRestart) {
-        //     console.log(`New game on '${settings.level}' mode. Word: ${secretWord}`);
-        // }
+        if (isRestart) {
+            console.log(`New game on '${settings.level}' mode. Word: ${secretWord}`);
+        }
 
         document.querySelectorAll('.tile').forEach(tile => {
             tile.classList.remove('flip');
@@ -388,15 +446,22 @@
     function endGame(isWin) {
         isGameOver = true;
         isAnimating = false;
+        stats.gamesPlayed++;
         if (isWin) {
+            stats.wins++;
+            stats.currentStreak++;
+            stats.maxStreak = Math.max(stats.maxStreak, stats.currentStreak);
+            stats.guessDistribution[currentRow + 1]++;
             endGameMessage.textContent = "VICTORY";
             endGameMessage.className = 'win-message';
             endGameDetails.textContent = `You guessed the secret word!`;
         } else {
+            stats.currentStreak = 0;
             endGameMessage.textContent = "DEFEAT";
             endGameMessage.className = 'loss-message';
             endGameDetails.textContent = `The secret word was: ${secretWord.toUpperCase()}`;
         }
+        saveStats();
         setTimeout(() => {
             endGameModal.classList.add('show');
         }, 200);

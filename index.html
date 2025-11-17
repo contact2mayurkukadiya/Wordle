@@ -25,21 +25,28 @@
     <div id="toast-container"></div>
 
     <header>
-        <div class="header-icons">
-            <div id="help-icon" class="icon">
-                <i class="fa-solid fa-circle-question"></i>
-            </div>
-        </div>
-        <h1>Wordle</h1>
         <div class="setting-wrapper">
             <div class="header-icons">
-                <div id="settings-icon" class="icon">
-                    <i class="fa-solid fa-gear"></i>
+                <div id="help-icon" class="icon">
+                    <i class="fa-solid fa-circle-question"></i>
                 </div>
             </div>
             <div class="header-icons">
                 <div id="reset-icon" class="icon">
                     <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+            </div>
+        </div>
+        <h1>Wordle</h1>
+        <div class="setting-wrapper">
+            <div class="header-icons">
+                <div id="stats-icon" class="icon">
+                    <i class="fa-solid fa-chart-bar"></i>
+                </div>
+            </div>
+            <div class="header-icons">
+                <div id="settings-icon" class="icon">
+                    <i class="fa-solid fa-gear"></i>
                 </div>
             </div>
         </div>
@@ -129,6 +136,70 @@
                 <label for="onscreen-keyboard-switch">On-Screen Keyboard Only</label>
                 <label class="switch"><input type="checkbox" id="onscreen-keyboard-switch"><span
                         class="slider"></span></label>
+            </div>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Statistics</h2>
+            <div id="stats-container">
+                <div class="stat-box">
+                    <span id="games-played" class="stat-number">0</span>
+                    <div class="stat-label">Played</div>
+                </div>
+                <div class="stat-box">
+                    <span id="win-percentage" class="stat-number">0</span>
+                    <div class="stat-label">Win %</div>
+                </div>
+                <div class="stat-box">
+                    <span id="current-streak" class="stat-number">0</span>
+                    <div class="stat-label">Current Streak</div>
+                </div>
+                <div class="stat-box">
+                    <span id="max-streak" class="stat-number">0</span>
+                    <div class="stat-label">Max Streak</div>
+                </div>
+            </div>
+            <h3>Guess Distribution</h3>
+            <div id="guess-distribution">
+                <div class="graph-row">
+                    <div class="graph-label">1</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="1">0</div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">2</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="2">0</div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">3</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="3">0</div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">4</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="4">0</div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">5</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="5">0</div>
+                    </div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-label">6</div>
+                    <div class="graph-bar-container">
+                        <div class="graph-bar" data-guess="6">0</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
