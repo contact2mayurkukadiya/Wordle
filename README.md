@@ -2,7 +2,7 @@
 
 A feature-rich, fully customizable app of the popular word-guessing game, built with vanilla JavaScript, HTML, and CSS. This project focuses on a powerful theming engine that allows for endless visual customization.
 
-<!-- ### [➡️ Live Demo (Link to your deployed game)](#) -->
+<!-- ### [➡️ Live Demo (https://contact2mayurkukadiya.github.io/Wordle/)](#) -->
 
 ---
 
